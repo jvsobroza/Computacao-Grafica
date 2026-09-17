@@ -13,51 +13,15 @@
  *
  * Nota sobre Construtores:
  * Não é necessário declarar um método constructor() na subclasse (classe do Jogo). Toda a inicialização de variáveis
-<<<<<<< HEAD
- * e objetos  deve ser feita no método acaoAoIniciar(), que é chamado automaticamente. A declaração de um construtor
-=======
  * e objetos deve ser feita no método acaoAoIniciar(), que é chamado automaticamente. A declaração de um construtor
->>>>>>> 7a76e07 (Aulas)
  * só é necessária caso o jogo precise receber parâmetros customizados extras, sendo obrigatório utilizar super(...).
  *
  * @example
  * <!-- 1. Estrutura básica HTML (index.html) -->
  * <!DOCTYPE html>
-<<<<<<< HEAD
- * <html lang="pt-BR">
- * <head>
- *   <meta charset="UTF-8">
- *   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- *   <title>Meu Jogo</title>
- *   <style>
- *     body {
- *       margin: 0;
- *       display: flex;
- *       justify-content: center;
- *       align-items: center;
- *       min-height: 100vh;
- *       background-color: #121212;
- *     }
- *
- *     canvas {
- *       border: 2px solid #ffffff;
- *       box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
- *     }
- *   </style>
- * </head>
- * <body>
- *   <canvas id="meuCanvas"></canvas>
- *
- *   <!-- Carrega a API primeiro, e em seguida o arquivo do jogo -->
- *   <script src="js_cg_2d_api.js"></script>
- *   <script src="meu_jogo.js"></script>
- * </body>
- * </html>
-=======
  * <meta charset="UTF-8">
  * <script src="js_cg_2d_api.js"></script>
  * <script src="jogo.js"></script>
->>>>>>> 7a76e07 (Aulas)
  *
  * @example
  * // 2. Implementação do Jogo em JS (jogo.js - uso padrão):
@@ -77,32 +41,20 @@
  * }
  *
  * window.addEventListener("load", () => {
-<<<<<<< HEAD
- *   new MeuJogo("Título do Jogo", "meuCanvas", 60, 800, 600);
-=======
  *   new MeuJogo("Título do Jogo", "gameCanvas", 800, 600);
->>>>>>> 7a76e07 (Aulas)
  * });
  *
  * @example
  * // 3. Uso avançado (com construtor para parâmetros customizados extras):
  * class JogoComModo extends JS_CG_2D_API {
  *   constructor(dificuldade, ...parametrosBase) {
-<<<<<<< HEAD
- *     super(...parametrosBase); // Repassa nome, canvasId, fps, largura e altura
-=======
  *     super(...parametrosBase); // Repassa nome, canvasId, largura e altura
->>>>>>> 7a76e07 (Aulas)
  *     this.dificuldade = dificuldade;
  *   }
  * }
  *
  * window.addEventListener("load", () => {
-<<<<<<< HEAD
- *   new JogoComModo("Difícil", "Título do Jogo", "meuCanvas", 60, 800, 600);
-=======
  *   new JogoComModo("Difícil", "Título do Jogo", "gameCanvas", 800, 600);
->>>>>>> 7a76e07 (Aulas)
  * });
  */
 
@@ -121,8 +73,6 @@ const Estilo = Object.freeze({
 });
 
 /**
-<<<<<<< HEAD
-=======
  * Representa um botão virtual interativo na tela para suporte a interações via Touch ou Mouse.
  */
 class BotaoTouch {
@@ -294,7 +244,6 @@ class BotaoTouch {
 }
 
 /**
->>>>>>> 7a76e07 (Aulas)
  * Representa uma caixa delimitadora alinhada aos eixos (AABB - Axis-Aligned Bounding Box) para detecção de colisão 2D.
  */
 class Retangulo2D {
@@ -560,11 +509,7 @@ class Personagem {
         }
       }
     }
-<<<<<<< HEAD
-  }  
-=======
   }
->>>>>>> 7a76e07 (Aulas)
 
   /**
    * Executa a ação de pulo caso o personagem esteja encostado no chão.
@@ -637,15 +582,6 @@ class Personagem {
  */
 class JS_CG_2D_API {
   /**
-<<<<<<< HEAD
-   * @param {string} nome - Título da janela/documento.
-   * @param {string} canvasId - ID do elemento HTMLCanvasElement. Se não existir, será criado.
-   * @param {number} fps - Taxa de quadros desejada por segundo.
-   * @param {number} w - Largura da tela em pixels.
-   * @param {number} h - Altura da tela em pixels.
-   */
-  constructor(nome, canvasId, fps, w, h) {
-=======
    * @param {string} nome - Título do jogo (Obrigatório)
    * @param {string} canvasId - ID do Canvas (Obrigatório)
    * @param {number} w - Largura em pixels (Obrigatório)
@@ -664,19 +600,14 @@ class JS_CG_2D_API {
         "Erro de Instanciação: 'w' (largura) e 'h' (altura) precisam ser números positivos válidos.",
       );
     }
->>>>>>> 7a76e07 (Aulas)
     this.nome = nome;
     this.largura = w;
     this.altura = h;
     this.larguraPadrao = w;
     this.alturaPadrao = h;
     this._fps = fps;
-<<<<<<< HEAD
-    this._intervaloFps = 1000 / fps;
-=======
     // Se fps for <= 0, desativa o limite de taxa e roda no máximo do navegador
     this._intervaloFps = fps > 0 ? 1000 / fps : 0;
->>>>>>> 7a76e07 (Aulas)
     this._ultimoFrame = 0;
     this._loopId = null;
 
@@ -686,10 +617,6 @@ class JS_CG_2D_API {
     this._corContorno = "black";
     this._corPreenchimento = "black";
 
-<<<<<<< HEAD
-    this.canvas = document.getElementById(canvasId);
-
-=======
     /** @type {Map<string, BotaoTouch>} Coleção de botões virtuais cadastrados. */
     this.botoesTouch = new Map();
 
@@ -699,7 +626,6 @@ class JS_CG_2D_API {
 
     // Busca o canvas ou cria um novo caso não tenha colocado no HTML (padrão).
     this.canvas = document.getElementById(canvasId);
->>>>>>> 7a76e07 (Aulas)
     if (!this.canvas) {
       this.canvas = document.createElement("canvas");
       this.canvas.id = canvasId;
@@ -708,8 +634,6 @@ class JS_CG_2D_API {
 
     this.canvas.width = this.largura;
     this.canvas.height = this.altura;
-<<<<<<< HEAD
-=======
 
     // Adaptação Responsiva mantendo o aspect-ratio
     this.canvas.style.maxWidth = "100vw";
@@ -717,7 +641,6 @@ class JS_CG_2D_API {
     this.canvas.style.objectFit = "contain";
     this.canvas.style.touchAction = "none"; // Impede gestos padrão do navegador (scroll/zoom)
 
->>>>>>> 7a76e07 (Aulas)
     // Desabilita clique com botão direito do mouse dentro do canvas
     this.canvas.addEventListener("contextmenu", (e) => e.preventDefault());
     this.canvas.tabIndex = 1;
@@ -736,21 +659,6 @@ class JS_CG_2D_API {
   }
 
   /**
-<<<<<<< HEAD
-   * Associa os manipuladores de eventos nativos do navegador às rotas da API.
-   * @private
-   */
-  _configurarEventos() {
-    this.canvas.addEventListener("click", (e) => this.cliqueDoMouse(e));
-    this.canvas.addEventListener("mousemove", (e) => {
-      if (e.buttons > 0) this.movimentoDoMousePressionado(e);
-      else this.movimentoDoMouse(e);
-    });
-    this.canvas.addEventListener("mousedown", (e) => this.mousePressionado(e));
-    this.canvas.addEventListener("mouseup", (e) => this.mouseSolto(e));
-
-    // Evita rolagem da tela com as setas
-=======
    * Garante que tags essenciais existam no <head>
    * @private
    */
@@ -1028,7 +936,6 @@ class JS_CG_2D_API {
     });
 
     // Eventos de Teclado
->>>>>>> 7a76e07 (Aulas)
     window.addEventListener("keydown", (e) => {
       if (
         ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "].includes(e.key)
@@ -1039,10 +946,6 @@ class JS_CG_2D_API {
     });
 
     window.addEventListener("keyup", (e) => this.teclaLiberada(e));
-<<<<<<< HEAD
-
-=======
->>>>>>> 7a76e07 (Aulas)
     window.addEventListener("beforeunload", () => this.acaoAoSair());
 
     document.addEventListener("fullscreenchange", () => {
@@ -1352,11 +1255,6 @@ class JS_CG_2D_API {
    * @param {HTMLImageElement} imgObj - Elemento de imagem carregado.
    * @param {number} x - Coordenada X de destino.
    * @param {number} y - Coordenada Y de destino.
-<<<<<<< HEAD
-   */
-  imagem(imgObj, x, y) {
-    this.gc.drawImage(imgObj, x, y);
-=======
    * @param {number} [l] - (Opcional) Largura de exibição no canvas.
    * @param {number} [a] - (Opcional) Altura de exibição no canvas.
    */
@@ -1366,7 +1264,6 @@ class JS_CG_2D_API {
     } else {
       this.gc.drawImage(imgObj, x, y);
     }
->>>>>>> 7a76e07 (Aulas)
   }
 
   /** Salva o estado atual da matriz de transformação e do contexto gráfico. */
@@ -1400,12 +1297,9 @@ class JS_CG_2D_API {
   _atualizarTimers() {
     const agora = performance.now();
     for (const [nome, t] of this.timers.entries()) {
-<<<<<<< HEAD
-=======
       // Ignora a checagem se o temporizador estiver pausado
       if (t.pausado) continue;
 
->>>>>>> 7a76e07 (Aulas)
       if (agora >= t.fimMs) {
         t.acao();
         if (t.repetir) {
@@ -1418,26 +1312,12 @@ class JS_CG_2D_API {
   }
 
   /**
-<<<<<<< HEAD
-   * Ciclo de execução sincronizado com a taxa de quadros (FPS).
-=======
    * Ciclo de execução sincronizado com a taxa de quadros (FPS) ou livre.
->>>>>>> 7a76e07 (Aulas)
    * @private
    */
   _rodar(agora) {
     if (!this._ultimoFrame) this._ultimoFrame = agora;
     const decorrido = agora - this._ultimoFrame;
-<<<<<<< HEAD
-    // Converte de milissegundos para SEGUNDOS
-    const dt = decorrido / 1000;
-
-    if (decorrido >= this._intervaloFps) {
-      this._ultimoFrame = agora - (decorrido % this._intervaloFps);
-      this._atualizarTimers();
-      this.atualizar(dt);
-      this.desenhar();
-=======
 
     // Executa se o FPS for livre (<= 0) ou se atingiu o intervalo do FPS limite
     if (this._fps <= 0 || decorrido >= this._intervaloFps) {
@@ -1453,7 +1333,6 @@ class JS_CG_2D_API {
       this.atualizar(dt);
       this.desenhar();
       this._desenharBotoesTouch();
->>>>>>> 7a76e07 (Aulas)
     }
 
     if (this._loopId) {
@@ -1509,11 +1388,7 @@ class JS_CG_2D_API {
   limparTela(cor) {
     this.gc.fillStyle = cor;
     this.gc.fillRect(0, 0, this.largura, this.altura);
-<<<<<<< HEAD
-  } 
-=======
   }
->>>>>>> 7a76e07 (Aulas)
 
   /**
    * Cria um temporizador acionado pelo relógio do sistema (performance.now).
@@ -1540,9 +1415,6 @@ class JS_CG_2D_API {
    */
   pararTimer(nome) {
     this.timers.delete(nome);
-<<<<<<< HEAD
-  }  
-=======
   }
 
   /**
@@ -1571,7 +1443,6 @@ class JS_CG_2D_API {
     t.pausado = false;
     delete t.tempoRestanteMs;
   }
->>>>>>> 7a76e07 (Aulas)
 
   /**
    * Retorna o tempo restante de um temporizador em segundos reais.
@@ -1582,14 +1453,11 @@ class JS_CG_2D_API {
     const t = this.timers.get(nome);
     if (!t) return -1;
 
-<<<<<<< HEAD
-=======
     // Se estiver pausado, retorna o tempo congelado
     if (t.pausado) {
       return t.tempoRestanteMs / 1000;
     }
 
->>>>>>> 7a76e07 (Aulas)
     const agora = performance.now();
     const restanteMs = t.fimMs - agora;
     return Math.max(restanteMs / 1000, 0);
@@ -1624,12 +1492,6 @@ class JS_CG_2D_API {
   desenharSprite(sprite) {
     let img = sprite.getImagem();
     if (img && img.complete && img.naturalWidth !== 0) {
-<<<<<<< HEAD
-      this.imagem(img, sprite.px, sprite.py);
-    }
-  }
-
-=======
       if (sprite.l > 0 && sprite.a > 0) {
         this.imagem(img, sprite.px, sprite.py, sprite.l, sprite.a);
       } else {
@@ -1718,7 +1580,6 @@ class JS_CG_2D_API {
     this.desempilhar();
   }
 
->>>>>>> 7a76e07 (Aulas)
   /** Chamado ao fechar/recarregar a aba do navegador. Sobrescreva para salvar dados. */
   acaoAoSair() {}
   /** Chamado na inicialização da aplicação. Sobrescreva para carregar recursos. */
@@ -1756,15 +1617,10 @@ class Sprite {
   /**
    * @param {number} [x=0] - Posição X inicial.
    * @param {number} [y=0] - Posição Y inicial.
-<<<<<<< HEAD
-   */
-  constructor(x = 0, y = 0) {
-=======
    * @param {number} [l=0] - Largura customizada (opcional).
    * @param {number} [a=0] - Altura customizada (opcional).
    */
   constructor(x = 0, y = 0, l = 0, a = 0) {
->>>>>>> 7a76e07 (Aulas)
     /** @type {number} Posição X na tela. */
     this.px = x;
     /** @type {number} Posição Y na tela. */
@@ -1773,12 +1629,6 @@ class Sprite {
     this.vx = 0;
     /** @type {number} Velocidade vertical. */
     this.vy = 0;
-<<<<<<< HEAD
-    /** @type {number} Largura do Sprite (auto-detectada ao carregar imagem). */
-    this.l = 0;
-    /** @type {number} Altura do Sprite (auto-detectada ao carregar imagem). */
-    this.a = 0;
-=======
 
     /** @type {number} Largura do Sprite. */
     this.l = l;
@@ -1787,7 +1637,6 @@ class Sprite {
 
     /** @type {boolean} Flag para sinalizar se a dimensão foi definida manualmente. */
     this.tamanhoManual = l > 0 && a > 0;
->>>>>>> 7a76e07 (Aulas)
 
     /** @type {Array<HTMLImageElement>} Quadro de imagens da animação atual. */
     this.animacaoAtual = [];
@@ -1799,9 +1648,6 @@ class Sprite {
     this.tickAtual = 0;
 
     /** @private */
-<<<<<<< HEAD
-    this._caixaColisao = new Retangulo2D(x, y, 0, 0);
-=======
     this._caixaColisao = new Retangulo2D(x, y, l, a);
   }
 
@@ -1814,7 +1660,6 @@ class Sprite {
     this.l = l;
     this.a = a;
     this.tamanhoManual = true;
->>>>>>> 7a76e07 (Aulas)
   }
 
   /**
@@ -1836,17 +1681,12 @@ class Sprite {
       this.animacaoAtual = listaImagens;
       this.frameAtual = 0;
       this.tickAtual = 0;
-<<<<<<< HEAD
-      this.l = 0;
-      this.a = 0;
-=======
 
       // Reseta as dimensões para auto-detecção apenas se não foram fixadas manualmente
       if (!this.tamanhoManual) {
         this.l = 0;
         this.a = 0;
       }
->>>>>>> 7a76e07 (Aulas)
     }
   }
 
@@ -1885,15 +1725,10 @@ class Sprite {
       }
     }
 
-<<<<<<< HEAD
-    let imgAtual = this.getImagem();
-    if (
-=======
     // Auto-detecta tamanho apenas se o tamanho manual não estiver ativo
     let imgAtual = this.getImagem();
     if (
       !this.tamanhoManual &&
->>>>>>> 7a76e07 (Aulas)
       imgAtual &&
       imgAtual.naturalWidth > 0 &&
       (this.l === 0 || this.a === 0)
