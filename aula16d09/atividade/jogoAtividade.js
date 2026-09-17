@@ -7,6 +7,8 @@ class MeuJogo extends JS_CG_2D_API {
     this.arvore = this.carregarFrames("arvore", 5);
     this.arvAnimacao = new Sprite(490, 300, 150, 150);
     this.arvAnimacao.setAnimacao(this.arvore);
+    this.estrada = new Image();
+    this.estrada.src = "imagens/estrada.png";
   }
   atualizar() {
     this.arvAnimacao.atualizar();
@@ -24,7 +26,7 @@ class MeuJogo extends JS_CG_2D_API {
     this.retangulo(0, 460, 10000, 1000, Estilo.PREENCHIDO);
     this.preenchimento("brown");
     this.retangulo(556, 440, 20, 20, Estilo.PREENCHIDO);
-    this.retangulo(360, 460, 215, 40, Estilo.PREENCHIDO);
+    this.imagem(this.estrada, 330, 350, 250, 250);
   }
 }
 window.addEventListener("load", () => {
